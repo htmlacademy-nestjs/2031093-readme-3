@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
 * Студент: [Vitaly Kolyshkin](https://up.htmlacademy.ru/nodejs-2/3/user/2031093).
-* Наставник: `Неизвестно`.
+* Наставник: `Михаил Кислый`.
 
 ---
 
