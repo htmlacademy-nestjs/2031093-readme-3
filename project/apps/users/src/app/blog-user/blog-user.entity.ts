@@ -1,4 +1,4 @@
-import { genSalt, hash } from 'bcrypt';
+import { genSalt, hash, compare } from 'bcrypt';
 
 import { User } from '@project/shared/app-types';
 import { SALT_ROUNDS } from './blog-user.constant';
@@ -32,5 +32,9 @@ export class BlogUserEntity implements User {
     const salt = await genSalt(SALT_ROUNDS);
     this.passwordHash = await hash(password, salt);
     return this;
+  }
+
+  public async comparePassword(password: string): Promise<boolean> {
+    return compare(password, this.passwordHash);
   }
 }
