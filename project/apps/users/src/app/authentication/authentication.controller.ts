@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, HttpCode, HttpStatus, Param } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { AuthenticationService } from './authentication.service';
@@ -15,6 +15,10 @@ export class AuthenticationController {
     private readonly authService: AuthenticationService
   ) {}
 
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'The new user has been successfully created.'
+  })
   @Post('register')
   public async create(@Body() dto: CreateUserDto) {
     const newUser = await this.authService.register(dto);
@@ -23,6 +27,12 @@ export class AuthenticationController {
 
   @ApiResponse({
     type: LoggedUserRdo,
+    status: HttpStatus.OK,
+    description: 'User has been successfully logged.',
+  })
+  @ApiResponse({
+    status: HttpStatus.UNAUTHORIZED,
+    description: 'Password or Login is wrong.',
   })
   @Post('login')
   public async login(@Body() dto: LoginUserDto) {
@@ -32,6 +42,8 @@ export class AuthenticationController {
 
   @ApiResponse({
     type: UserRdo,
+    status: HttpStatus.OK,
+    description: 'User found',
   })
   @Get(':id')
   public async show(@Param('id') id: string) {
