@@ -10,6 +10,7 @@ export class BlogUserEntity implements User {
   public lastname: string;
   public passwordHash: string;
   public avatar: string;
+  public dateRegistered: string;
 
   constructor(blogUser: User) {
     this.fillEntity(blogUser);
