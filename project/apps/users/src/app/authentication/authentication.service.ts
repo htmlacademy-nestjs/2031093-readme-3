@@ -7,7 +7,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import dayjs from 'dayjs';
 
-import { BlogUserMemoryRepository } from '../blog-user/blog-user-memory.repository';
+import { BlogUserRepository } from '../blog-user/blog-user.repository';
 import { BlogUserEntity } from '../blog-user/blog-user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -20,7 +20,7 @@ import {
 @Injectable()
 export class AuthenticationService {
   constructor(
-    private readonly blogUserRepository: BlogUserMemoryRepository,
+    private readonly blogUserRepository: BlogUserRepository,
     private readonly configService: ConfigService,
   ) {
     // Извлекаем настройки из конфигурации
