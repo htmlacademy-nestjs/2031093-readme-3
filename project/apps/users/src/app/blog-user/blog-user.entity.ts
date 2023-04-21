@@ -9,8 +9,8 @@ export class BlogUserEntity implements User {
   public firstname: string;
   public lastname: string;
   public passwordHash: string;
+  public dateRegistered: Date;
   public avatar: string;
-  public dateRegistered: string;
 
   constructor(blogUser: User) {
     this.fillEntity(blogUser);
@@ -26,6 +26,7 @@ export class BlogUserEntity implements User {
     this.firstname = blogUser.firstname;
     this.lastname = blogUser.lastname;
     this.passwordHash = blogUser.passwordHash;
+    this.dateRegistered = blogUser.dateRegistered;
     this.avatar = blogUser.avatar;
   }
 
